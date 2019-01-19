@@ -19,13 +19,13 @@ module OBD
 
       date = @response[4..-1]
       groups = date.chars.each_slice(2).to_a.map(&:join)
-      A = groups[0]
-      B = groups[1]
-      C = groups[2]
-      D = groups[3]
+      a = groups[0]
+      b = groups[1]
+      c = groups[2]
+      d = groups[3]
 
       @command.result_formatter
-        .call @response, A, B, C, D
+        .call @response, a, b, c, d
     end
 
     def display_value
