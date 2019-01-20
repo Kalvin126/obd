@@ -1,4 +1,4 @@
-require_relative "Command"
+require_relative 'Command'
 
 class Gauge
     
@@ -31,7 +31,7 @@ class Gauge
 
   def display_value(command_results) # Hash<Command, Response>
     if @commands_syms.count == 0
-      return "no commands_syms"
+      return 'no commands_syms'
     else
       return @result_formatter[command_results]
     end
