@@ -42,7 +42,7 @@ module OBD
   def self.fuel_system_status
     Command.new("Fuel system status", 1, 3, nil,
       lambda { |x, a|
-        case x[4..-1][0..1].to_i(16)
+        case x[0..1].to_i(16)
         when 0
           :inactive
         when 1
@@ -325,7 +325,7 @@ module OBD
 
   def self.engine_coolant_temperature_6
     Command.new("Engine coolant temperature", 1, 103, '*F',
-      lambda { |x, a|(x.split('\r').first[4..-1][2..3].to_i(16) - 40.0) * 1.8 + 32.0 }
+      lambda { |x, a|(x.split('\r').first[2..3].to_i(16) - 40.0) * 1.8 + 32.0 }
     )
   end
 

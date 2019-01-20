@@ -17,15 +17,23 @@ module OBD
     def value
       return nil if @response == 'NO DATA'
 
-      date = @response[4..-1]
-      groups = date.chars.each_slice(2).to_a.map(&:join)
-      a = groups[0]
-      b = groups[1]
-      c = groups[2]
-      d = groups[3]
+      data = @response[4..-1]
+      result_formatter = @command.result_formatter
 
-      @command.result_formatter
-        .call @response, a, b, c, d
+      if result_formatter.arity > 1
+        groups = data.chars
+          .each_slice(2)
+          .to_a
+          .map(&:join)
+          .map do |data|
+            data.to_i(16)
+        end
+        arguments = [data, groups.first(result_formatter.arity - 1)]
+
+        result_formatter.call *arguments
+      else
+        result_formatter.call data
+      end
     end
 
     def display_value
