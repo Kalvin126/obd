@@ -59,8 +59,13 @@ module OBD
       end
 
       if current_value.is_a?(Float)
-        puts @command.pid
-        return current_value.truncate(2).to_s + @command.unit
+        return_value = current_value.truncate(2).to_s
+
+        if not @command.unit.nil?
+          return_value = return_value + @command.unit
+        end
+
+        return return_value
       else 
         return current_value.to_s
       end
