@@ -73,4 +73,16 @@ class Gauge
     )
   end
 
+  def self.fuel_air_ratio
+    Gauge.new("Fuel Air Ratio",
+      [:fuel_air_commanded_equivalence_ratio],
+      lambda { |command_results|
+        command_afr = command_results[:fuel_air_commanded_equivalence_ratio]
+        result = 14.64 * command_afr.value
+
+        return result.to_s
+      }
+    )
+  end
+
 end
