@@ -80,7 +80,7 @@ class Gauge
         command_afr = command_results[:fuel_air_commanded_equivalence_ratio]
         result = 14.64 * command_afr.value
 
-        return result.to_s
+        return result.truncate(3).to_s
       }
     )
   end
