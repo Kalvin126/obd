@@ -29,6 +29,7 @@ module OBD
             data.to_i(16)
         end
         arguments = [data, groups.first(result_formatter.arity - 1)]
+        arguments = arguments.flatten
 
         result_formatter.call *arguments
       else
