@@ -6,6 +6,14 @@ module OBD
       @response = response
     end
 
+    def command
+      @command
+    end
+
+    def raw_response
+      @response
+    end
+
     def raw_values
       return nil if @response == 'NO DATA'
 
