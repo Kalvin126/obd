@@ -21,8 +21,7 @@ class MockConnection
   end
 
   def [] command
-    binding.pry
-    return @data[@frame][command.command]
+    return OBD::Response.new command, @data[@frame][command.command]
   end
 
   def increment_frame_data
