@@ -1,5 +1,3 @@
-require 'pry'
-
 module OBD
 
   Command = Struct.new(:name, :service, :pid, :unit, :result_formatter) do
