@@ -59,7 +59,7 @@ module OBD
   end
 
   def self.calculated_engine_load
-    Command.new('Calculated engine load', 1, 4, '%',
+    Command.new('Engine load', 1, 4, '%',
       lambda { |x, a| a / 2.55 }
     )
   end
@@ -71,25 +71,25 @@ module OBD
   end
 
   def self.short_term_fuel_trim_bank_1
-    Command.new('Short term fuel trim bank 1', 1, 6, '%',
+    Command.new('ST FT bank 1', 1, 6, '%',
       lambda { |x, a| a * 0.78125 - 100 }
     )
   end
 
   def self.long_term_fuel_trim_bank_1
-    Command.new('Long term fuel trim bank 1', 1, 7, '%' ,
+    Command.new('LT FT bank 1', 1, 7, '%' ,
       lambda { |x, a| a * 0.78125 - 100 }
     )
   end
 
   def self.short_term_fuel_trim_bank_2
-    Command.new('Short term fuel trim bank 2', 1, 8, '%',
+    Command.new('ST FT bank 2', 1, 8, '%',
       lambda { |x, a| a * 0.78125 - 100 }
     )
   end
 
   def self.long_term_fuel_trim_bank_2
-    Command.new('Long term fuel trim bank 2', 1, 9, '%',
+    Command.new('LT FT bank 2', 1, 9, '%',
       lambda { |x, a| a * 0.78125 - 100 }
     )
   end
@@ -102,7 +102,7 @@ module OBD
 
   def self.intake_manifold_absolute_pressure
     Command.new('Intake MAP', 1, 11, 'psi',
-      lambda { |x, a| a  * 0.145038 }
+      lambda { |x, a| a * 0.145038 }
     )
   end
 
@@ -322,7 +322,7 @@ module OBD
   end
 
   def self.engine_coolant_temperature_6
-    Command.new('Engine coolant temperature', 1, 103, '*F',
+    Command.new('ECT', 1, 103, '*F',
       lambda { |x, a|(x.split('\r').first[2..3].to_i(16) - 40.0) * 1.8 + 32.0 }
     )
   end
